@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İsot 💌</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:system-ui,Segoe UI,Arial;
+background:linear-gradient(135deg,#0f172a,#1e1b4b);
+color:white;
+overflow:hidden;
+}
+
+.card{
+text-align:center;
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 20px 60px rgba(0,0,0,.6);
+width:90%;
+max-width:420px;
+position:relative;
+}
+
+h1{
+font-size:22px;
+margin-bottom:20px;
+}
+
+#message{
+opacity:.9;
+margin-bottom:25px;
+font-size:15px;
+}
+
+button{
+padding:12px 20px;
+font-size:15px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:bold;
+position:absolute;
+transition:all .2s ease;
+}
+
+#yes{
+background:#22d3ee;
+color:#000;
+left:50%;
+top:65%;
+transform:translate(-50%,-50%);
+}
+
+#no{
+background:#fb7185;
+color:#000;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+}
+
+#final{
+display:none;
+margin-top:20px;
+font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>İsot… benim olur musun? 💘</h1>
+<div id="message"></div>
+
+<button id="no">❌ Hayır</button>
+<button id="yes">✅ Evet</button>
+
+<div id="final"></div>
+</div>
+
+<script>
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+const final=document.getElementById("final");
+const message=document.getElementById("message");
+
+let scale=1;
+let tries=0;
+
+function moveButton(){
+tries++;
+const x=(Math.random()*200)-100;
+const y=(Math.random()*150)-75;
+noBtn.style.transform=`translate(${x}px,${y}px)`;
+
+scale+=0.15;
+yesBtn.style.transform=`translate(-50%,-50%) scale(${scale})`;
+
+if(tries>=1){
+message.innerHTML="Emin misin? Çok mutlu olabilirsin… <br> Bence bir daha düşün… <br><b>Son şans 😌</b>";
+}
+}
+
+noBtn.addEventListener("click",moveButton);
+noBtn.addEventListener("mouseover",moveButton);
+noBtn.addEventListener("touchstart",moveButton);
+
+yesBtn.addEventListener("click",()=>{
+noBtn.style.display="none";
+yesBtn.style.display="none";
+final.style.display="block";
+final.innerHTML="💌 Ne kadar kaçarsan kaç… bu işin sonu <b>EVET</b> ✨";
+});
+</script>
+
+</body>
+</html>
