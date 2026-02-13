@@ -1,127 +1,235 @@
 <!doctype html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>İsot 💌</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>İsot 💌</title>
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#20104a;
+      --card:rgba(255,255,255,.10);
+      --stroke:rgba(255,255,255,.16);
+      --text:rgba(255,255,255,.94);
+      --muted:rgba(255,255,255,.70);
+      --yes:#22d3ee;
+      --no:#fb7185;
+      --shadow:0 24px 70px rgba(0,0,0,.55);
+    }
 
-<style>
-body{
-margin:0;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:system-ui,Segoe UI,Arial;
-background:linear-gradient(135deg,#0f172a,#1e1b4b);
-color:white;
-overflow:hidden;
-}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:22px;
+      font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+        "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1000px 700px at 15% 15%, rgba(59,130,246,.35) 0%, transparent 55%),
+        radial-gradient(900px 650px at 85% 20%, rgba(168,85,247,.35) 0%, transparent 55%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+    }
 
-.card{
-text-align:center;
-background:rgba(255,255,255,0.08);
-padding:30px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-box-shadow:0 20px 60px rgba(0,0,0,.6);
-width:90%;
-max-width:420px;
-position:relative;
-}
+    .card{
+      width:min(520px, 100%);
+      border-radius:26px;
+      background:var(--card);
+      border:1px solid var(--stroke);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(12px);
+      padding:26px 20px 18px;
+      position:relative;
+    }
 
-h1{
-font-size:22px;
-margin-bottom:20px;
-}
+    .title{
+      margin:0 0 12px;
+      font-size:24px;
+      line-height:1.2;
+      letter-spacing:.2px;
+      text-align:center;
+    }
 
-#message{
-opacity:.9;
-margin-bottom:25px;
-font-size:15px;
-}
+    /* Mesaj alanı: başlangıçta görünmez ve YER KAPLAMAZ (kusursuz görünüm) */
+    .message{
+      display:none;
+      margin:0 auto 14px;
+      width:min(420px, 100%);
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+    }
+    .message.show{ display:block; }
 
-button{
-padding:12px 20px;
-font-size:15px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:bold;
-position:absolute;
-transition:all .2s ease;
-}
+    .arena{
+      position:relative;
+      height:240px;
+      border-radius:20px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:rgba(0,0,0,.14);
+      overflow:hidden;
+    }
 
-#yes{
-background:#22d3ee;
-color:#000;
-left:50%;
-top:65%;
-transform:translate(-50%,-50%);
-}
+    .btn{
+      position:absolute;
+      border:0;
+      cursor:pointer;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:800;
+      font-size:16px;
+      box-shadow:0 16px 40px rgba(0,0,0,.35);
+      transition: transform 120ms ease, filter 120ms ease;
+      user-select:none;
+      -webkit-tap-highlight-color:transparent;
+      touch-action:manipulation;
+      white-space:nowrap;
+    }
+    .btn:active{ transform: translateY(1px) scale(.99); }
 
-#no{
-background:#fb7185;
-color:#000;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%);
-}
+    #yes{
+      background:linear-gradient(135deg, rgba(34,211,238,1), rgba(59,130,246,1));
+      color:#06111a;
+      left:50%;
+      top:64%;
+      transform:translate(-50%,-50%) scale(1);
+    }
 
-#final{
-display:none;
-margin-top:20px;
-font-size:18px;
-}
-</style>
+    #no{
+      background:linear-gradient(135deg, rgba(251,113,133,1), rgba(244,63,94,1));
+      color:#1b0b0f;
+      left:50%;
+      top:36%;
+      transform:translate(-50%,-50%);
+    }
+
+    .final{
+      display:none;
+      margin:14px auto 0;
+      width:min(420px, 100%);
+      text-align:center;
+      font-size:18px;
+      line-height:1.4;
+      padding:14px 14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(0,0,0,.18);
+    }
+    .final b{ color:rgba(255,255,255,.98); }
+
+    .footer{
+      margin-top:14px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:rgba(255,255,255,.55);
+      font-size:12px;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="card">
+    <h1 class="title">İsot… benim olur musun? 💘</h1>
 
-<div class="card">
-<h1>İsot… benim olur musun? 💘</h1>
-<div id="message"></div>
+    <!-- Başlangıçta boş ve görünmez: Hayır'a basınca açılacak -->
+    <div id="message" class="message"></div>
 
-<button id="no">❌ Hayır</button>
-<button id="yes">✅ Evet</button>
+    <div id="arena" class="arena">
+      <button id="no" class="btn">❌ Hayır</button>
+      <button id="yes" class="btn">✅ Evet</button>
+    </div>
 
-<div id="final"></div>
-</div>
+    <div id="final" class="final">💌 Ne kadar kaçarsan kaç… bu işin sonu <b>EVET</b> ✨</div>
+
+    <div class="footer">
+      <span>🔒 İsot özel sürüm</span>
+      <span id="counter">Hayır denemesi: 0</span>
+    </div>
+  </div>
 
 <script>
-const noBtn=document.getElementById("no");
-const yesBtn=document.getElementById("yes");
-const final=document.getElementById("final");
-const message=document.getElementById("message");
+  const noBtn = document.getElementById("no");
+  const yesBtn = document.getElementById("yes");
+  const arena = document.getElementById("arena");
+  const message = document.getElementById("message");
+  const finalBox = document.getElementById("final");
+  const counter = document.getElementById("counter");
 
-let scale=1;
-let tries=0;
+  let tries = 0;
+  let yesScale = 1;
 
-function moveButton(){
-tries++;
-const x=(Math.random()*200)-100;
-const y=(Math.random()*150)-75;
-noBtn.style.transform=`translate(${x}px,${y}px)`;
+  const msgLines = [
+    "Emin misin? Çok mutlu olabilirsin…<br>Bence bir daha düşün…<br><b>Son şans 😌</b>",
+    "Bak ciddi söylüyorum…<br>Şu an yanlış butonla flört ediyorsun 😂<br><b>Son şans 😌</b>",
+    "Hayır mı? Aşırı iddialı…<br>Bir daha düşün bence 😌<br><b>Son şans 😌</b>"
+  ];
 
-scale+=0.15;
-yesBtn.style.transform=`translate(-50%,-50%) scale(${scale})`;
+  function rand(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
-if(tries>=1){
-message.innerHTML="Emin misin? Çok mutlu olabilirsin… <br> Bence bir daha düşün… <br><b>Son şans 😌</b>";
-}
-}
+  function showMessage(){
+    message.classList.add("show");
+    // Aynı metin yerine bazen varyasyon
+    message.innerHTML = msgLines[tries % msgLines.length];
+  }
 
-noBtn.addEventListener("click",moveButton);
-noBtn.addEventListener("mouseover",moveButton);
-noBtn.addEventListener("touchstart",moveButton);
+  // Hayır butonunu arena içinde güvenle gezdir
+  function moveNo(){
+    const rect = arena.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
 
-yesBtn.addEventListener("click",()=>{
-noBtn.style.display="none";
-yesBtn.style.display="none";
-final.style.display="block";
-final.innerHTML="💌 Ne kadar kaçarsan kaç… bu işin sonu <b>EVET</b> ✨";
-});
+    const pad = 12;
+    const maxX = rect.width - btnRect.width - pad;
+    const maxY = rect.height - btnRect.height - pad;
+
+    const x = rand(pad, Math.max(pad, maxX));
+    const y = rand(pad, Math.max(pad, maxY));
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top  = y + "px";
+    noBtn.style.transform = "translate(0,0)";
+  }
+
+  function growYes(){
+    yesScale = Math.min(yesScale + 0.12, 2.0);
+    yesBtn.style.transform = `translate(-50%,-50%) scale(${yesScale})`;
+    yesBtn.style.filter = "brightness(1.05)";
+  }
+
+  function onNoAction(e){
+    e?.preventDefault?.();
+    tries++;
+    counter.textContent = `Hayır denemesi: ${tries}`;
+    showMessage();
+    moveNo();
+    growYes();
+  }
+
+  // Hem hover hem click hem touch çalışsın
+  noBtn.addEventListener("mouseenter", onNoAction);
+  noBtn.addEventListener("click", onNoAction);
+  noBtn.addEventListener("touchstart", onNoAction, {passive:false});
+
+  yesBtn.addEventListener("click", () => {
+    // final
+    noBtn.style.display = "none";
+    yesBtn.style.display = "none";
+    message.classList.remove("show"); // mesaj alanı da saklansın -> tertemiz final
+    finalBox.style.display = "block";
+  });
+
+  // İlk açılışta butonlar tam ortalı kalsın, mesaj görünmesin -> kusursuz görünüm
 </script>
-
 </body>
 </html>
