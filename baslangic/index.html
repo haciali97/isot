@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>04.06.2026 | Küçük Başlangıç 🎈</title>
+  <style>
+    :root{
+      --bg1:#fff7fb;
+      --bg2:#ffe9f4;
+      --bg3:#fff3d7;
+      --pink:#ff6fae;
+      --honey:#f6b83f;
+      --text:#3a2430;
+      --muted:#7d5d6b;
+      --card:rgba(255,255,255,.72);
+      --stroke:rgba(255,111,174,.25);
+      --shadow:0 24px 70px rgba(174, 67, 116, .22);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:22px;
+      overflow:hidden;
+      font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,143,191,.50), transparent 30%),
+        radial-gradient(circle at 86% 18%, rgba(246,184,63,.38), transparent 27%),
+        radial-gradient(circle at 50% 95%, rgba(255,111,174,.32), transparent 35%),
+        linear-gradient(135deg,var(--bg1),var(--bg2) 52%,var(--bg3));
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        radial-gradient(rgba(255,111,174,.22) 1.2px, transparent 1.2px),
+        radial-gradient(rgba(246,184,63,.20) 1.1px, transparent 1.1px);
+      background-size:38px 38px, 52px 52px;
+      background-position:0 0, 18px 22px;
+      pointer-events:none;
+    }
+
+    .scene{
+      position:relative;
+      width:min(720px,100%);
+      z-index:2;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--stroke);
+      border-radius:34px;
+      background:var(--card);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(18px);
+      padding:34px 24px 26px;
+      text-align:center;
+    }
+
+    .card::before{
+      content:"🎈 🍼 🍯 🤎 💗 🎈 🍼 🍯";
+      position:absolute;
+      left:50%;
+      top:18px;
+      transform:translateX(-50%);
+      width:120%;
+      opacity:.18;
+      font-size:46px;
+      letter-spacing:18px;
+      white-space:nowrap;
+      filter:blur(.1px);
+    }
+
+    .eyebrow{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      margin:0 auto 14px;
+      padding:9px 15px;
+      border-radius:999px;
+      background:rgba(255,255,255,.62);
+      border:1px solid rgba(255,111,174,.22);
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.3px;
+    }
+
+    h1{
+      position:relative;
+      margin:0;
+      font-size:clamp(32px, 7vw, 58px);
+      line-height:1.03;
+      letter-spacing:-1.5px;
+      color:#2f1824;
+    }
+
+    h1 span{
+      display:block;
+      margin-top:7px;
+      color:var(--pink);
+      text-shadow:0 8px 24px rgba(255,111,174,.24);
+    }
+
+    .date{
+      position:relative;
+      margin:18px auto 18px;
+      width:max-content;
+      max-width:100%;
+      padding:13px 18px;
+      border-radius:18px;
+      background:linear-gradient(135deg, rgba(255,111,174,.16), rgba(246,184,63,.20));
+      border:1px solid rgba(255,111,174,.22);
+      color:#5a3342;
+      font-weight:900;
+      font-size:18px;
+      box-shadow:0 12px 34px rgba(255,111,174,.14);
+    }
+
+    .message{
+      position:relative;
+      margin:0 auto;
+      max-width:560px;
+      color:#4b3240;
+      font-size:clamp(16px, 3.6vw, 19px);
+      line-height:1.72;
+    }
+
+    .message strong{
+      color:#2f1824;
+      background:linear-gradient(transparent 58%, rgba(246,184,63,.45) 58%);
+      padding:0 3px;
+    }
+
+    .tokens{
+      position:relative;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:24px auto 4px;
+    }
+
+    .token{
+      width:52px;
+      height:52px;
+      display:grid;
+      place-items:center;
+      border-radius:19px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(255,111,174,.20);
+      box-shadow:0 12px 26px rgba(139,90,43,.10);
+      font-size:27px;
+      animation:breathe 2.9s ease-in-out infinite;
+    }
+
+    .token:nth-child(2){animation-delay:.2s}
+    .token:nth-child(3){animation-delay:.4s}
+    .token:nth-child(4){animation-delay:.6s}
+    .token:nth-child(5){animation-delay:.8s}
+    .token:nth-child(6){animation-delay:1s}
+
+    .quote{
+      position:relative;
+      margin:24px auto 0;
+      max-width:520px;
+      padding:18px 16px;
+      border-radius:24px;
+      background:rgba(255,255,255,.55);
+      border:1px solid rgba(246,184,63,.24);
+      color:#5c3a48;
+      font-size:15px;
+      line-height:1.62;
+    }
+
+    .signature{
+      position:relative;
+      margin-top:20px;
+      color:#7b4c5f;
+      font-size:13px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+
+    .float{
+      position:fixed;
+      bottom:-90px;
+      font-size:34px;
+      opacity:.80;
+      animation:rise linear infinite;
+      z-index:1;
+      pointer-events:none;
+      filter:drop-shadow(0 12px 18px rgba(174,67,116,.18));
+    }
+
+    .f1{left:7%; animation-duration:13s; animation-delay:-2s}
+    .f2{left:18%; animation-duration:16s; animation-delay:-8s}
+    .f3{left:31%; animation-duration:12s; animation-delay:-4s}
+    .f4{left:47%; animation-duration:18s; animation-delay:-11s}
+    .f5{left:62%; animation-duration:14s; animation-delay:-6s}
+    .f6{left:78%; animation-duration:17s; animation-delay:-10s}
+    .f7{left:90%; animation-duration:12s; animation-delay:-5s}
+    .f8{left:39%; animation-duration:15s; animation-delay:-12s}
+
+    @keyframes rise{
+      0%{transform:translateY(0) rotate(-5deg) scale(.88); opacity:0}
+      10%{opacity:.82}
+      50%{transform:translateY(-55vh) rotate(7deg) scale(1)}
+      100%{transform:translateY(-115vh) rotate(-6deg) scale(.95); opacity:0}
+    }
+
+    @keyframes breathe{
+      0%,100%{transform:translateY(0) scale(1)}
+      50%{transform:translateY(-7px) scale(1.04)}
+    }
+
+    @media (max-width:520px){
+      body{padding:16px}
+      .card{border-radius:28px; padding:30px 18px 22px}
+      .date{font-size:16px}
+      .token{width:47px;height:47px;border-radius:17px;font-size:25px}
+      .float{font-size:29px}
+    }
+  </style>
+</head>
+<body>
+  <div class="float f1">🎈</div>
+  <div class="float f2">💗</div>
+  <div class="float f3">🍼</div>
+  <div class="float f4">🍯</div>
+  <div class="float f5">🤎</div>
+  <div class="float f6">🎈</div>
+  <div class="float f7">💞</div>
+  <div class="float f8">🍯</div>
+
+  <main class="scene">
+    <section class="card" aria-label="Küçük başlangıç notu">
+      <div class="eyebrow">🎈 küçük bir sır • büyük bir his 🍯</div>
+
+      <h1>
+        Dün bir tarih başladı
+        <span>içimde.</span>
+      </h1>
+
+      <div class="date">04.06.2026 • bizim küçük “varım” günümüz</div>
+
+      <p class="message">
+        Kimsenin bilmediği, kimseye anlatılmayacak kadar bize ait bir yerden…<br>
+        Sırlarla, kaçamaklarla, susarak sevmelerle; ama yine de kalbe dokunan bir <strong>“varım”</strong> ile.
+      </p>
+
+      <div class="tokens" aria-hidden="true">
+        <div class="token">🎈</div>
+        <div class="token">🍼</div>
+        <div class="token">🍯</div>
+        <div class="token">🤎</div>
+        <div class="token">💗</div>
+        <div class="token">🎈</div>
+      </div>
+
+      <div class="quote">
+        Bazı başlangıçlar ilan edilmez.<br>
+        Sadece iki kişi bilir.<br>
+        Ve bazen en gerçek şey, herkesin görmediği yerde başlar.
+      </div>
+
+      <div class="signature">🎈🍼🍯🤎 Başlangıcımız kutlu olsun, İsot.</div>
+    </section>
+  </main>
+</body>
+</html>
