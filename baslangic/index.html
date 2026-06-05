@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>04.06.2026 | Küçük Başlangıç 🎈</title>
+  <title>04.06.2026 | Varım Günümüz 🎈</title>
   <style>
     :root{
       --bg1:#fff7fb;
@@ -13,7 +13,7 @@
       --honey:#f6b83f;
       --text:#3a2430;
       --muted:#7d5d6b;
-      --card:rgba(255,255,255,.72);
+      --card:rgba(255,255,255,.74);
       --stroke:rgba(255,111,174,.25);
       --shadow:0 24px 70px rgba(174, 67, 116, .22);
     }
@@ -51,7 +51,7 @@
 
     .scene{
       position:relative;
-      width:min(720px,100%);
+      width:min(760px,100%);
       z-index:2;
     }
 
@@ -63,7 +63,7 @@
       background:var(--card);
       box-shadow:var(--shadow);
       backdrop-filter: blur(18px);
-      padding:34px 24px 26px;
+      padding:34px 24px 28px;
       text-align:center;
     }
 
@@ -74,7 +74,7 @@
       top:18px;
       transform:translateX(-50%);
       width:120%;
-      opacity:.18;
+      opacity:.17;
       font-size:46px;
       letter-spacing:18px;
       white-space:nowrap;
@@ -101,9 +101,9 @@
     h1{
       position:relative;
       margin:0;
-      font-size:clamp(32px, 7vw, 58px);
-      line-height:1.03;
-      letter-spacing:-1.5px;
+      font-size:clamp(30px, 7vw, 54px);
+      line-height:1.05;
+      letter-spacing:-1.3px;
       color:#2f1824;
     }
 
@@ -116,7 +116,7 @@
 
     .date{
       position:relative;
-      margin:18px auto 18px;
+      margin:18px auto 20px;
       width:max-content;
       max-width:100%;
       padding:13px 18px;
@@ -129,19 +129,27 @@
       box-shadow:0 12px 34px rgba(255,111,174,.14);
     }
 
-    .message{
+    .poem{
       position:relative;
       margin:0 auto;
-      max-width:560px;
-      color:#4b3240;
-      font-size:clamp(16px, 3.6vw, 19px);
-      line-height:1.72;
+      max-width:580px;
+      color:#442b38;
+      font-size:clamp(17px, 3.7vw, 21px);
+      line-height:1.68;
+      font-weight:650;
     }
 
-    .message strong{
+    .poem p{
+      margin:0 0 15px;
+    }
+
+    .poem p:last-child{margin-bottom:0}
+
+    .poem strong{
       color:#2f1824;
       background:linear-gradient(transparent 58%, rgba(246,184,63,.45) 58%);
-      padding:0 3px;
+      padding:0 4px;
+      border-radius:5px;
     }
 
     .tokens{
@@ -150,7 +158,7 @@
       justify-content:center;
       flex-wrap:wrap;
       gap:10px;
-      margin:24px auto 4px;
+      margin:25px auto 7px;
     }
 
     .token{
@@ -172,26 +180,19 @@
     .token:nth-child(5){animation-delay:.8s}
     .token:nth-child(6){animation-delay:1s}
 
-    .quote{
+    .signature{
       position:relative;
-      margin:24px auto 0;
-      max-width:520px;
+      margin:22px auto 0;
+      max-width:560px;
       padding:18px 16px;
       border-radius:24px;
       background:rgba(255,255,255,.55);
       border:1px solid rgba(246,184,63,.24);
-      color:#5c3a48;
-      font-size:15px;
-      line-height:1.62;
-    }
-
-    .signature{
-      position:relative;
-      margin-top:20px;
-      color:#7b4c5f;
-      font-size:13px;
-      font-weight:800;
-      letter-spacing:.2px;
+      color:#4d2d3b;
+      font-size:clamp(18px, 4vw, 23px);
+      line-height:1.45;
+      font-weight:950;
+      box-shadow:0 14px 36px rgba(246,184,63,.12);
     }
 
     .float{
@@ -227,11 +228,12 @@
     }
 
     @media (max-width:520px){
-      body{padding:16px}
+      body{padding:16px; overflow:auto}
       .card{border-radius:28px; padding:30px 18px 22px}
       .date{font-size:16px}
       .token{width:47px;height:47px;border-radius:17px;font-size:25px}
       .float{font-size:29px}
+      .poem{font-size:17px; line-height:1.62}
     }
   </style>
 </head>
@@ -246,20 +248,27 @@
   <div class="float f8">🍯</div>
 
   <main class="scene">
-    <section class="card" aria-label="Küçük başlangıç notu">
-      <div class="eyebrow">🎈 küçük bir sır • büyük bir his 🍯</div>
+    <section class="card" aria-label="Varım günü notu">
+      <div class="eyebrow">🎈 Toparlanmış Ana Metin 🍯</div>
 
       <h1>
-        Dün bir tarih başladı
-        <span>içimde.</span>
+        Benim bayramım
+        <span>sensin.</span>
       </h1>
 
-      <div class="date">04.06.2026 • bizim küçük “varım” günümüz</div>
+      <div class="date">04.06.2026 • bizim “varım” günümüz</div>
 
-      <p class="message">
-        Kimsenin bilmediği, kimseye anlatılmayacak kadar bize ait bir yerden…<br>
-        Sırlarla, kaçamaklarla, susarak sevmelerle; ama yine de kalbe dokunan bir <strong>“varım”</strong> ile.
-      </p>
+      <div class="poem">
+        <p>Şeker toplamayı bırakalı çok oldu…<br>Ama seni almaya gelirim. 🍯</p>
+
+        <p>Benim bayramım sensin.<br>Çok sevap işlemedim belki,<br>ama kazandığım cennetim sensin.</p>
+
+        <p>İleriyi göremiyorum,<br>ama ufkum da sensin.</p>
+
+        <p>Hiç üşümüyorum;<br>çünkü güneşim sensin. ☀️</p>
+
+        <p>Sende kayboldum ben…<br>Ama yolum da sensin,<br>haritam da sensin.</p>
+      </div>
 
       <div class="tokens" aria-hidden="true">
         <div class="token">🎈</div>
@@ -270,13 +279,7 @@
         <div class="token">🎈</div>
       </div>
 
-      <div class="quote">
-        Bazı başlangıçlar ilan edilmez.<br>
-        Sadece iki kişi bilir.<br>
-        Ve bazen en gerçek şey, herkesin görmediği yerde başlar.
-      </div>
-
-      <div class="signature">🎈🍼🍯🤎 Başlangıcımız kutlu olsun, İsot.</div>
+      <div class="signature">“Varım” günümüz kutlu olsun, İsot’um.</div>
     </section>
   </main>
 </body>
